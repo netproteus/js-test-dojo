@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Unit Tests</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="resources/mocha.css"/>
+
+    <style type="text/css">
+        .bl-title .rs {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<div id="mocha"></div>
+
+<script src="resources/sinon.js"></script>
+<script src="resources/mocha.js"></script>
+<script src="resources/expect.js"></script>
+
+<script>
+    mocha.setup('bdd')
+</script>
+
+<script data-main="test.js" src="../js/libs/require.js"></script>
+
+<script src="resources/blanket.js" data-cover-never="['../js/libs']" data-cover-only="../js" data-cover-flags="branchTracking"></script>
+
+<script src="resources/mocha-blanket.js"></script>
+
+<script>
+    /* global blanket */
+    if (window.PHANTOMJS) {
+        blanket.options("reporter", "../../node_modules/grunt-blanket-mocha-badoo/support/grunt-reporter.js");
+        blanket.options("reporter_options", {filename_from: '../js', filename_to: 'build/js'});
+    }
+</script>
+
+<style>
+    #blanket-main { margin: 0 25px 0 65px; font-size: 12px }
+</style>
+
+</body>
+</html>
